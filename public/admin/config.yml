@@ -54,6 +54,7 @@ collections:
                   - { label: Split Media, value: split-media }
                   - { label: Centered, value: centered }
                   - { label: Service Led, value: service-led }
+                  - { label: Full Image, value: image-full }
               - label: Media Position
                 name: mediaPosition
                 widget: select
@@ -85,6 +86,7 @@ collections:
               - { label: Grid, value: grid }
               - { label: List, value: list }
               - { label: Featured First, value: featured-first }
+              - { label: Icon Grid, value: icon-grid }
           - label: Testimonials Layout
             name: testimonialsVariant
             widget: select
@@ -100,6 +102,7 @@ collections:
               - { label: Grid, value: grid }
               - { label: Feature Left, value: feature-left }
               - { label: Feature Right, value: feature-right }
+              - { label: Portfolio, value: portfolio }
           - label: CTA Layout
             name: ctaVariant
             widget: select

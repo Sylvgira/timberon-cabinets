@@ -1,16 +1,16 @@
 {
   "hero": {
     "secondaryLabel": "View services",
-    "variant": "simple",
-    "eyebrow": "Small business website starter",
-    "intro": "Replace the content, tune the variables, and keep the structure simple enough for fast delivery.",
+    "variant": "image-full",
+    "eyebrow": "Premium Timber Flooring",
+    "intro": "Melbourne's trusted timber flooring specialists. From installation to refinishing, we bring craftsmanship and care to every project.",
     "primaryUrl": "/contact/",
     "mediaPosition": "right",
     "mediaLabel": "Flexible hero",
     "mediaText": "Use this space for photography, a proof point, or a location/service cue.",
-    "primaryLabel": "Start a project",
+    "primaryLabel": "Get a free quote",
     "mediaTitle": "Choose a hero shape that suits the client",
-    "title": "A clean starting point for Client Business",
+    "title": "Beautiful Floors\nStart Here",
     "secondaryUrl": "/services/",
     "highlights": [
       "Consulting",
@@ -19,8 +19,8 @@
       "Test"
     ]
   },
-  "servicesVariant": "grid",
+  "servicesVariant": "icon-grid",
   "testimonialsVariant": "grid",
-  "galleryVariant": "grid",
+  "galleryVariant": "portfolio",
   "ctaVariant": "band"
 }

@@ -7,13 +7,15 @@ interface Props {
     address?: string;
     socialLinks?: Array<{ label: string; url: string }>;
   };
+  variant?: 'default' | 'dark';
 }
 
-const { site } = Astro.props;
+const { site, variant = 'default' } = Astro.props;
 const year = new Date().getFullYear();
+const isDark = variant === 'dark';
 ---
 
-<footer class="site-footer">
+<footer class:list={['site-footer', isDark && 'site-footer--dark']}>
   <div class="site-footer__inner container">
     <div>
       <a class="site-footer__brand" href="/">{site.name}</a>
@@ -107,6 +109,52 @@ const year = new Date().getFullYear();
 
   .site-footer__meta a {
     margin: 0;
+  }
+
+  /* --- dark variant --- */
+
+  .site-footer--dark {
+    border-top: none;
+    background: #111111;
+    color: #ffffff;
+  }
+
+  .site-footer--dark .site-footer__brand {
+    color: #ffffff;
+  }
+
+  .site-footer--dark h2 {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: var(--font-condensed);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .site-footer--dark a {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .site-footer--dark a:hover {
+    color: #ffffff;
+  }
+
+  .site-footer--dark p {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .site-footer--dark .site-footer__meta {
+    border-top-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .site-footer--dark .site-footer__meta a {
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .site-footer--dark .site-footer__meta a:hover {
+    color: #ffffff;
   }
 
   @media (max-width: 760px) {

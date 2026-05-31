@@ -136,6 +136,26 @@ p {
   border-color: var(--color-rule);
 }
 
+.button--solid-light {
+  background: #ffffff;
+  color: #111111;
+  border-color: #ffffff;
+}
+
+.button--solid-light:hover {
+  filter: brightness(0.9);
+}
+
+.button--outline-light {
+  background: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.button--outline-light:hover {
+  border-color: #ffffff;
+}
+
 .button-row {
   display: flex;
   flex-wrap: wrap;

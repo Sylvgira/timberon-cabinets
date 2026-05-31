@@ -11,6 +11,7 @@ import FAQList from '@components/FAQList.astro';
 import LogoStrip from '@components/LogoStrip.astro';
 import EmbedSection from '@components/EmbedSection.astro';
 import ContactBlock from '@components/ContactBlock.astro';
+import TrustBar from '@components/TrustBar.astro';
 import { byOrder } from '../lib/content';
 
 const services = byOrder(await getCollection('services'));
@@ -31,6 +32,13 @@ const heroBase = {
   mediaText: 'Replace this with client photography, a location cue, or a concise trust signal.',
   highlights: ['Plan', 'Build', 'Support']
 };
+
+const trustItems = [
+  { label: '20+ Years Experience' },
+  { label: 'Licensed & Insured' },
+  { label: 'Premium Materials' },
+  { label: '5-Star Rated' }
+];
 ---
 
 <BaseLayout
@@ -55,6 +63,7 @@ const heroBase = {
     <a href="#proof">Proof</a>
     <a href="#media">Media</a>
     <a href="#ctas">CTAs</a>
+    <a href="#trust-bar">Trust</a>
     <a href="#utility">Utility</a>
   </div>
 
@@ -63,6 +72,7 @@ const heroBase = {
       <p class="eyebrow">Heroes</p>
       <h2>Hero variants</h2>
     </div>
+    <Hero {...heroBase} variant="image-full" />
     <Hero {...heroBase} variant="simple" />
     <Hero {...heroBase} variant="split-media" mediaPosition="right" />
     <Hero {...heroBase} variant="split-media" mediaPosition="left" />
@@ -72,6 +82,10 @@ const heroBase = {
 
   <Section id="services" eyebrow="Services" title="Service list variants">
     <div class="block-stack">
+      <div>
+        <h3>Icon Grid</h3>
+        <ServiceGrid services={services} variant="icon-grid" />
+      </div>
       <div>
         <h3>Grid</h3>
         <ServiceGrid services={services} variant="grid" />
@@ -110,6 +124,10 @@ const heroBase = {
 
   <Section id="media" eyebrow="Media" title="Gallery variants">
     <div class="block-stack">
+      <div>
+        <h3>Portfolio</h3>
+        <GalleryBlock variant="portfolio" />
+      </div>
       <div>
         <h3>Grid</h3>
         <GalleryBlock variant="grid" />
@@ -150,6 +168,19 @@ const heroBase = {
       label="Contact"
       href="/contact/"
       variant="inline"
+    />
+  </section>
+
+  <section id="trust-bar" class="blocks-group">
+    <div class="container" style="margin-bottom:var(--space-6)">
+      <p class="eyebrow">Trust</p>
+      <h2>Trust bar</h2>
+    </div>
+    <TrustBar
+      title="Why choose Jefferson&apos;s?"
+      items={trustItems}
+      ctaLabel="Get a Quote"
+      ctaUrl="/contact/"
     />
   </section>
 

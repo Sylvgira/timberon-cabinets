@@ -63,7 +63,7 @@ const pages = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/pages' }),
   schema: z.object({
     hero: z.object({
-      variant: z.enum(['simple', 'split-media', 'centered', 'service-led']).default('simple'),
+      variant: z.enum(['simple', 'split-media', 'centered', 'service-led', 'image-full']).default('simple'),
       mediaPosition: z.enum(['left', 'right']).default('right'),
       eyebrow: z.string().optional(),
       title: z.string(),
@@ -77,9 +77,9 @@ const pages = defineCollection({
       mediaText: z.string().optional(),
       highlights: z.array(z.string()).default([])
     }),
-    servicesVariant: z.enum(['grid', 'list', 'featured-first']).default('grid'),
+    servicesVariant: z.enum(['grid', 'list', 'featured-first', 'icon-grid']).default('grid'),
     testimonialsVariant: z.enum(['grid', 'stacked']).default('grid'),
-    galleryVariant: z.enum(['grid', 'feature-left', 'feature-right']).default('grid'),
+    galleryVariant: z.enum(['grid', 'feature-left', 'feature-right', 'portfolio']).default('grid'),
     ctaVariant: z.enum(['band', 'split', 'inline']).default('band')
   })
 });
