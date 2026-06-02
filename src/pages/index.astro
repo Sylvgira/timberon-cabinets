@@ -2,79 +2,229 @@
 import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import Hero from '@components/Hero.astro';
-import Section from '@components/Section.astro';
-import ServiceGrid from '@components/ServiceGrid.astro';
-import Testimonials from '@components/Testimonials.astro';
-import FAQList from '@components/FAQList.astro';
-import LogoStrip from '@components/LogoStrip.astro';
-import GalleryBlock from '@components/GalleryBlock.astro';
+import Introduction from '@components/Introduction.astro';
+import SelectedWork from '@components/SelectedWork.astro';
+import ProcessStrip from '@components/ProcessStrip.astro';
+import FeatureQuote from '@components/FeatureQuote.astro';
 import CTABand from '@components/CTABand.astro';
-import EmbedSection from '@components/EmbedSection.astro';
 import { byOrder } from '../lib/content';
 
 const site = await getEntry('settings', 'site');
 const home = await getEntry('pages', 'home');
-const services = byOrder(await getCollection('services')).slice(0, 3);
 const testimonials = byOrder(await getCollection('testimonials'));
-const faqs = byOrder(await getCollection('faqs'));
-const embeds = byOrder(await getCollection('embeds')).filter((embed) => embed.data.enabled);
+const services = byOrder(await getCollection('services'));
 
 const hero = home?.data.hero;
+const projects = home?.data.gallery;
+
+/* Use Sarah Chen's testimonial — strongest quote. */
+const featureTestimonial = testimonials.find((t) => t.id === 'sarah-chen') ?? testimonials[0];
+
+/* Service images: map each service to a suitable project image */
+const serviceImages: Record<string, string> = {
+  kitchens: '/uploads/_MG_5683.jpg',
+  bathrooms: '/uploads/_MG_5694.jpg',
+  laundries: '/uploads/_MG_5763.jpg',
+  wardrobes: '/uploads/_MG_5657.jpg',
+  cabinetry: '/uploads/SNY05537-2.jpg'
+};
 ---
 
 <BaseLayout>
+  <!-- Hero: full-screen, minimal UI, single CTA -->
   <Hero
     variant={hero?.variant}
-    mediaPosition={hero?.mediaPosition}
     eyebrow={hero?.eyebrow}
     title={hero?.title ?? `A clean starting point for ${site?.data.name ?? 'your client'}`}
-    intro={hero?.intro ?? 'Replace the content, tune the variables, and keep the structure simple enough for fast client delivery.'}
+    intro={hero?.intro ?? 'Replace the content, tune the variables, and keep the structure simple.'}
     primaryLabel={hero?.primaryLabel ?? 'Start a project'}
     primaryUrl={hero?.primaryUrl ?? '/contact/'}
-    secondaryLabel={hero?.secondaryLabel ?? 'View services'}
-    secondaryUrl={hero?.secondaryUrl ?? '/services/'}
-    mediaLabel={hero?.mediaLabel}
-    mediaTitle={hero?.mediaTitle}
-    mediaText={hero?.mediaText}
-    highlights={hero?.highlights}
+    imageUrl={hero?.imageUrl}
   />
 
-  <Section
-    eyebrow="Services"
-    title="Common offers, ready to tailor"
-    intro="Use these entries as service templates. Keep each page focused on the client problem, the outcome, and the next step."
-  >
-    <ServiceGrid services={services} variant={home?.data.servicesVariant} />
-  </Section>
+  <!-- Introduction: two-column editorial statement -->
+  <Introduction />
 
-  <Section
-    variant="surface"
-    eyebrow="Proof"
-    title="Simple trust signals"
-    intro="Replace these placeholders with real client testimonials, partner logos, memberships, or local credentials."
-  >
-    <Testimonials testimonials={testimonials} variant={home?.data.testimonialsVariant} />
-  </Section>
+  <!-- Selected Work: full-width photography with captions -->
+  <SelectedWork projects={projects} />
 
-  <Section eyebrow="Associations" title="A neutral strip for credibility">
-    <LogoStrip />
-  </Section>
+  <!-- Services: image-led collection, no cards or icons -->
+  <section class="services-inline">
+    <div class="container">
+      <div class="services-inline__header">
+        <p class="eyebrow">What we build</p>
+        <h2>Cabinetry for every room</h2>
+      </div>
+    </div>
 
-  <Section variant="surface" eyebrow="Media" title="Placeholder gallery">
-    <GalleryBlock variant={home?.data.galleryVariant} />
-  </Section>
+    <div class="services-inline__track">
+      {services.map((service) => (
+        <a href={`/services/${service.id}/`} class="services-inline__item">
+          <div class="services-inline__image-wrap">
+            <img
+              src={serviceImages[service.id] ?? '/uploads/_MG_5701.jpg'}
+              alt={service.data.title}
+              loading="lazy"
+            />
+            <div class="services-inline__label">
+              <span class="services-inline__name">{service.data.title}</span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
 
-  {embeds.map((embed) => <EmbedSection embed={embed} />)}
+  <!-- Process: simple sequence -->
+  <ProcessStrip />
 
-  <Section eyebrow="Questions" title="Frequently asked questions">
-    <FAQList faqs={faqs} />
-  </Section>
+  <!-- Testimonial: single editorial quote -->
+  <FeatureQuote
+    quote={featureTestimonial?.data?.quote}
+    name={featureTestimonial?.data?.name}
+    role={featureTestimonial?.data?.role}
+  />
 
+  <!-- Contact CTA -->
   <CTABand
-    title="Ready to adapt this for a client?"
-    text="Start with the client brief, update the site settings, then swap the brand tokens before writing detailed copy."
-    label="Contact"
+    title="Ready to get started?"
+    text="Tell us about your project and we will arrange a design consultation. No obligation, just a clear conversation."
+    label="Get a quote"
     href="/contact/"
-    variant={home?.data.ctaVariant}
+    variant={home?.data.ctaVariant ?? 'band'}
   />
 </BaseLayout>
+
+<style is:global>
+  /* ── Scroll reveal animations ──
+     Gentle fades on scroll — architectural, not decorative. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+
+  .reveal--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes imageReveal {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .reveal-image {
+    clip-path: inset(0 0 100% 0);
+    animation: none;
+  }
+
+  .reveal-image--visible {
+    animation: imageReveal 0.9s ease-out forwards;
+  }
+</style>
+
+<script>
+  /* ── Intersection Observer for scroll reveals ── */
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          if (el.classList.contains('reveal-image')) {
+            el.classList.add('reveal-image--visible');
+          } else {
+            el.classList.add('reveal--visible');
+          }
+          observer.unobserve(el);
+        }
+      }
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  const revealEls = document.querySelectorAll('.reveal, .reveal-image');
+  for (const el of revealEls) {
+    observer.observe(el);
+  }
+</script>
+
+<style>
+  /* ── Services inline section ── */
+  .services-inline {
+    padding-block: var(--section-y);
+  }
+
+  .services-inline__header {
+    margin-bottom: var(--space-7);
+  }
+
+  .services-inline__header h2 {
+    margin-bottom: 0;
+  }
+
+  .services-inline__track {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-3);
+  }
+
+  .services-inline__item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+  }
+
+  .services-inline__image-wrap {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+  }
+
+  .services-inline__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .services-inline__item:hover .services-inline__image-wrap img {
+    transform: scale(1.04);
+  }
+
+  .services-inline__label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--space-4);
+    background: linear-gradient(to top, rgba(17, 17, 17, 0.6), transparent);
+  }
+
+  .services-inline__name {
+    display: block;
+    color: #ffffff;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 900px) {
+    .services-inline__track {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .services-inline__track {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

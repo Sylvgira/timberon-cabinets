@@ -3,18 +3,18 @@
 
   /* Brand primitives: swap these first for a new client. */
   --brand-name-color: #111111;
-  --brand-primary: #1d4ed8;
+  --brand-primary: #2C1810;
   --brand-primary-contrast: #ffffff;
-  --brand-secondary: #f5f5f5;
+  --brand-secondary: #F6F3EE;
   --brand-accent: #111111;
 
-  /* Neutral palette. Keep these quiet unless the brand needs a strong system. */
+  /* Neutral palette */
   --color-white: #ffffff;
   --color-ink: #111111;
-  --color-muted: #5f6368;
-  --color-soft: #f7f7f7;
+  --color-muted: #6E675F;
+  --color-soft: #F6F3EE;
   --color-surface: #ffffff;
-  --color-border: #dedede;
+  --color-border: #DDD7CF;
   --color-overlay: rgba(17, 17, 17, 0.58);
   --color-overlay-strong: rgba(0, 0, 0, 0.75);
   --color-gold: #b8942e;
@@ -45,7 +45,7 @@
   --text-lg: 1.35rem;
   --text-xl: 1.75rem;
   --text-2xl: 2.25rem;
-  --text-3xl: clamp(2.5rem, 7vw, 5.25rem);
+  --text-3xl: clamp(4rem, 9vw, 8rem);
   --line-tight: 1.02;
   --line-heading: 1.12;
   --line-body: 1.65;

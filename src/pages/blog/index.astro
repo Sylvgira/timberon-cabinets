@@ -9,11 +9,11 @@ import { byDateDesc } from '../../lib/content';
 const posts = byDateDesc((await getCollection('posts')).filter((post) => !post.data.draft));
 ---
 
-<BaseLayout title="News" description="News and updates for this small business website.">
+<BaseLayout title="News" description="News and articles from Timberon Cabinets — insights on cabinetry, materials, and Melbourne home renovations.">
   <PageIntro
     eyebrow="News"
-    title="Updates and useful notes"
-    intro="Use this section for practical articles, announcements, recent work, or client education."
+    title="Articles and insights"
+    intro="Practical articles on cabinetry, materials, and renovation planning — written by our team."
   />
 
   <Section>

@@ -75,12 +75,18 @@ const pages = defineCollection({
       mediaLabel: z.string().optional(),
       mediaTitle: z.string().optional(),
       mediaText: z.string().optional(),
-      highlights: z.array(z.string()).default([])
+      highlights: z.array(z.string()).default([]),
+      imageUrl: z.string().optional()
     }),
     servicesVariant: z.enum(['grid', 'list', 'featured-first', 'icon-grid']).default('grid'),
     testimonialsVariant: z.enum(['grid', 'stacked']).default('grid'),
     galleryVariant: z.enum(['grid', 'feature-left', 'feature-right', 'portfolio']).default('grid'),
-    ctaVariant: z.enum(['band', 'split', 'inline']).default('band')
+    ctaVariant: z.enum(['band', 'split', 'inline']).default('band'),
+    gallery: z.array(z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      imageUrl: z.string()
+    })).optional()
   })
 });
 

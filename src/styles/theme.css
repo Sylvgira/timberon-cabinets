@@ -73,7 +73,12 @@ h3 {
 
 h1 {
   font-size: var(--text-3xl);
+  font-weight: 500;
   line-height: var(--line-tight);
+}
+
+h2 {
+  font-weight: 600;
 }
 
 h2 {

@@ -1,0 +1,65 @@
+---
+interface Props {
+  quote?: string;
+  name?: string;
+  role?: string;
+}
+
+const {
+  quote = 'We renovated our entire kitchen and Timberon built the cabinetry. The difference between what they make and what you get from a flat-pack supplier is night and day. Every drawer opens smoothly, every door aligns perfectly. Three years in and it still looks brand new.',
+  name = 'Sarah Chen',
+  role = 'Kitchen renovation, Ivanhoe'
+} = Astro.props;
+---
+
+<section class="feature-quote">
+  <div class="container container--narrow">
+    <figure class="feature-quote__figure">
+      <blockquote>
+        <p>{quote}</p>
+      </blockquote>
+      <figcaption>
+        <strong>{name}</strong>
+        {role && <span>{role}</span>}
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .feature-quote {
+    padding-block: var(--section-y);
+    background: var(--color-section);
+  }
+
+  .feature-quote__figure {
+    margin: 0;
+    text-align: center;
+  }
+
+  .feature-quote__figure blockquote {
+    margin: 0 0 var(--space-6);
+  }
+
+  .feature-quote__figure blockquote p {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-heading);
+    margin: 0;
+    quotes: none;
+  }
+
+  .feature-quote__figure figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .feature-quote__figure figcaption strong {
+    color: var(--color-heading);
+    font-weight: 600;
+  }
+</style>

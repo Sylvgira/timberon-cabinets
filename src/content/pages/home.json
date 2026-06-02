@@ -1,26 +1,23 @@
 {
   "hero": {
-    "secondaryLabel": "View services",
     "variant": "image-full",
-    "eyebrow": "Premium Timber Flooring",
-    "intro": "Melbourne's trusted timber flooring specialists. From installation to refinishing, we bring craftsmanship and care to every project.",
+    "eyebrow": "Timberon Cabinets",
+    "title": "Custom Cabinetry,\nBuilt to Last",
+    "intro": "Cabinet makers serving Melbourne from our Thomastown workshop. We design, build, and install custom kitchens, bathrooms, laundries, wardrobes, and joinery.",
+    "primaryLabel": "Get a quote",
     "primaryUrl": "/contact/",
-    "mediaPosition": "right",
-    "mediaLabel": "Flexible hero",
-    "mediaText": "Use this space for photography, a proof point, or a location/service cue.",
-    "primaryLabel": "Get a free quote",
-    "mediaTitle": "Choose a hero shape that suits the client",
-    "title": "Beautiful Floors\nStart Here",
-    "secondaryUrl": "/services/",
-    "highlights": [
-      "Consulting",
-      "Implementation",
-      "Support",
-      "Test"
-    ]
+    "imageUrl": "/timberon-cabinets/uploads/IMG_9733.jpeg"
   },
   "servicesVariant": "icon-grid",
   "testimonialsVariant": "grid",
   "galleryVariant": "portfolio",
-  "ctaVariant": "band"
+  "ctaVariant": "band",
+  "gallery": [
+    { "title": "Kitchen renovation", "description": "Custom cabinetry, Ivanhoe", "imageUrl": "/timberon-cabinets/uploads/_MG_5701.jpg" },
+    { "title": "Bathroom vanity", "description": "Slimline joinery, Reservoir", "imageUrl": "/timberon-cabinets/uploads/_MG_5694.jpg" },
+    { "title": "Laundry fit-out", "description": "Full-height cabinetry, Preston", "imageUrl": "/timberon-cabinets/uploads/_MG_5763.jpg" },
+    { "title": "Walk-in wardrobe", "description": "Custom storage system, Epping", "imageUrl": "/timberon-cabinets/uploads/_MG_5657.jpg" },
+    { "title": "Kitchen cabinetry", "description": "Hamptons-style joinery, Kew", "imageUrl": "/timberon-cabinets/uploads/_MG_5683.jpg" },
+    { "title": "Bathroom joinery", "description": "Floating vanity, Thornbury", "imageUrl": "/timberon-cabinets/uploads/SNY05537-2.jpg" }
+  ]
 }

@@ -6,32 +6,37 @@ import GalleryBlock from '@components/GalleryBlock.astro';
 import CTABand from '@components/CTABand.astro';
 ---
 
-<BaseLayout title="About" description="About page template for a small business website.">
+<BaseLayout title="About" description="Cabinet makers serving Melbourne from our Thomastown workshop. Custom kitchens, bathrooms, laundries, wardrobes, and joinery.">
   <PageIntro
     eyebrow="About"
-    title="A concise story with practical proof"
-    intro="Use this page to explain who the business serves, what it is known for, and why clients trust it."
+    title="Cabinet makers who still care about the joinery"
+    intro="We design, build, and install custom cabinetry for Melbourne homes. Every project starts with a conversation and ends with a walk-through."
   />
 
-  <Section title="What clients should understand first" narrow>
+  <Section title="How we work" narrow>
     <div class="prose">
       <p>
-        This starter keeps the about page direct. Replace this copy with the client’s origin story, service philosophy,
-        qualifications, and local context.
+        Timberon Cabinets was founded on a simple idea: custom cabinetry should be built by people who take pride in the joinery —
+        not assembled from flat-pack components on a tight schedule. We are based in Thomastown and serve Melbourne homeowners,
+        builders, architects, and designers who value quality over speed.
       </p>
       <p>
-        For most small businesses, the goal is not a long biography. The goal is to make a visitor confident that the
-        business is real, capable, and easy to contact.
+        Every project is designed in CAD, built in our workshop, and installed by our own crew. We do not sub-contract installation
+        and we do not rush the finish work. That is why our cabinetry lasts.
+      </p>
+      <p>
+        Whether you need a single custom wardrobe or a full home fit-out, we will treat your project with the same attention to
+        detail — and give you a clear timeline and a fixed price before we start.
       </p>
     </div>
   </Section>
 
-  <Section variant="surface" eyebrow="Images" title="Team, workplace, or process">
+  <Section variant="surface" eyebrow="Our work" title="Recent projects">
     <GalleryBlock />
   </Section>
 
   <CTABand
-    title="Make the next step obvious"
-    text="A strong about page should naturally lead visitors toward an enquiry, booking, or service page."
+    title="Ready to talk about your project?"
+    text="Tell us what you are planning and we will arrange a design consultation at our workshop or your site."
   />
 </BaseLayout>

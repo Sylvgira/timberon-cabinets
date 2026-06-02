@@ -1,20 +1,16 @@
 {
-  "name": "Client Business",
-  "description": "A clear small-business website starter built for fast client adaptation.",
-  "url": "https://example.com",
-  "email": "hello@example.com",
-  "phone": "+61 400 000 000",
-  "address": "123 Example Street, Melbourne VIC",
-  "ctaLabel": "Book a call",
+  "name": "Timberon Cabinets",
+  "description": "Custom cabinetry, built to last. Cabinet makers serving Melbourne from our Thomastown workshop — kitchens, bathrooms, laundries, wardrobes, and joinery.",
+  "url": "https://timberoncabinets.com.au",
+  "email": "tim@timberoncabinets.com.au",
+  "phone": "(03) 9464 5200",
+  "address": "Thomastown VIC 3074",
+  "ctaLabel": "Get a quote",
   "ctaUrl": "/contact/",
   "socialLinks": [
     {
       "label": "Instagram",
-      "url": "https://example.com"
-    },
-    {
-      "label": "LinkedIn",
-      "url": "https://example.com"
+      "url": "https://www.instagram.com/timberoncabinets/"
     }
   ]
 }

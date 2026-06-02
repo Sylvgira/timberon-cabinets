@@ -1,24 +1,24 @@
 ---
 version: "alpha"
-name: "Client Site Template"
-description: "A neutral small-business website design system for fast, brand-specific Astro build-outs."
+name: "Timberon Cabinets"
+description: "Warm, material-focused, and trade-direct. A cabinet maker's brand that leads with craftsmanship, local roots, and a clear quote path."
 colors:
-  primary: "#1d4ed8"
+  primary: "#2C1810"
   on-primary: "#ffffff"
-  secondary: "#f5f5f5"
-  accent: "#111111"
+  secondary: "#f7f5f0"
+  accent: "#1a1a1a"
   neutral: "#ffffff"
-  surface: "#f7f7f7"
-  text: "#111111"
-  text-muted: "#5f6368"
-  border: "#dedede"
+  surface: "#f7f5f0"
+  text: "#1a1a1a"
+  text-muted: "#6b6258"
+  border: "#d4ccc4"
 typography:
   h1:
     fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
-    fontSize: "5.25rem"
-    fontWeight: 700
-    lineHeight: 1.02
-    letterSpacing: "0em"
+    fontSize: "clamp(3rem, 8vw, 5.5rem)"
+    fontWeight: 800
+    lineHeight: 0.92
+    letterSpacing: "-0.015em"
   h2:
     fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
     fontSize: "2.25rem"
@@ -77,40 +77,47 @@ components:
 
 ## Overview
 
-The template starts as a neutral wireframe. It should adapt to many small-business brands without carrying a strong default style.
+Timberon Cabinets is a Thomastown-based cabinet maker serving northern Melbourne. Their current site is Squarespace 7.0 — clean enough, but template-driven and stagnant. The concept homepage should feel like an upgrade their current brand deserves, not a replacement or rebrand.
 
-Quiet structure, clear type, restrained borders, and simple spacing define the baseline. The first brand pass should come from variables and real content, not decorative effects.
-
-Keep brand changes concentrated in `src/styles/tokens.css`, `src/styles/theme.css`, and `src/content/settings/site.json`.
+The design language is warm, material-conscious, and professional without being luxury. Think "your trusted local cabinet maker" not "bespoke design studio." Photography carries the emotional weight; the layout stays out of the way.
 
 ## Colors
 
-The default palette is intentionally plain and should be replaced with the client brand during build-out.
+The palette is grounded, warm, and trade-direct. It replaces the template's default blue with a warm dark brown that reads as solid and crafted.
 
-- **Primary (#1d4ed8):** Default action color. Replace with the client's main CTA or brand color.
-- **On Primary (#ffffff):** Text on primary actions. Preserve WCAG AA contrast against the final primary color.
-- **Accent (#111111):** Strong neutral accent for brand marks, headings, or restrained emphasis.
-- **Surface (#f7f7f7):** Quiet section background for separating content bands without heavy decoration.
-- **Text (#111111):** Main readable foreground color.
-- **Text Muted (#5f6368):** Paragraphs, captions, metadata, and secondary labels.
-- **Border (#dedede):** Rules and quiet component outlines.
+- **Primary (#2C1810):** Default action color. A warm dark brown — button fills, links, accent elements. Reads as reliable, not trendy.
+- **On Primary (#ffffff):** Text on primary backgrounds. Preserves WCAG AA contrast.
+- **Accent (#1a1a1a):** Strong near-black for headings and brand marks. Keeps sharp definition against warm backgrounds.
+- **Surface (#f7f5f0):** Warm off-white section background for separating content bands. The warmth should be barely perceptible — just enough to avoid the coolness of pure #f7f7f7.
+- **Text (#1a1a1a):** Main readable foreground.
+- **Text Muted (#6b6258):** Paragraphs, captions, metadata, and secondary labels. A warm mid-grey.
+- **Border (#d4ccc4):** Warm-toned border. Avoids the sterile blue-grey of typical web borders.
+- **Neutral (#ffffff):** Page background and card surfaces. Clean, open, lets photography do the work.
 
 Update colors in this order: `--brand-primary`, `--brand-primary-contrast`, `--brand-name-color`, `--brand-secondary`, then `--brand-accent`. Component-specific color overrides should come only after semantic aliases are insufficient.
 
 ## Typography
 
-The system uses Inter by default through `--font-sans`, with system fallbacks. Typography should stay readable, direct, and businesslike unless the client brief clearly calls for a more editorial, luxury, playful, or technical voice.
+The system uses Inter by default through `--font-sans`, with system fallbacks. Typography stays direct and trade-confident. No decorative flourishes — the confidence is in the words, not the font choice.
 
-Use one `h1` per page. Home pages may use the larger hero scale; inner pages should use `PageIntro` and tighter hierarchy. Keep letter spacing at `0` for normal headings and body text. Reserve uppercase tracking for small eyebrow labels only.
+Use one `h1` per page. The hero uses an uppercase condensed style (`--font-condensed`) at 800 weight with tight tracking — this reads solid and crafted, matching the "built to last" message. Inner pages use `PageIntro` and tighter hierarchy. Keep letter spacing at `0` for normal headings and body text. Reserve uppercase tracking for small eyebrow labels only.
 
-Change `--font-body` and `--font-display` only when the client's brand direction is clear. Avoid adding web font dependencies unless they materially improve the finished site.
+Change `--font-body` and `--font-display` only if a clear brand direction emerges. Avoid adding web font dependencies unless they materially improve the finished comp.
 
 ## Layout
 
-Use `Section` for vertical rhythm and background variants. Use `.container` and `.container--narrow` for readable line lengths. Keep pages small and direct: small-business visitors usually need clarity, proof, and contact paths more than complex storytelling.
+Use `Section` for vertical rhythm and background variants. Use `.container` and `.container--narrow` for readable line lengths. Pages should be small and direct: cabinet buyers need clarity, proof of quality, and a clear contact path.
+
+**Homepage order:**
+1. Hero (image-full) — detail or process shot, headline, two CTAs
+2. Service grid (icon-grid) — room categories: kitchens, bathrooms, laundries, wardrobes, cabinetry
+3. Testimonials (grid) — real client quotes
+4. Logo trust strip — subtle trade association credibility
+5. Gallery (portfolio) — 6 project shots with suburb-based descriptions
+6. FAQs — process, timeline, materials, pricing
+7. CTA band — quote contact prompt
 
 For a new client, change in this order:
-
 1. `src/content/settings/site.json`: name, description, URL, contact details, CTA.
 2. Brand color primitives in `src/styles/tokens.css`.
 3. Font variables if the brand has a clear type direction.
@@ -121,49 +128,52 @@ Visit `/blocks/` during local preview to compare available component variants be
 
 ## Elevation & Depth
 
-The default system favors borders, spacing, and surface changes over heavy shadows.
+The system favors borders, spacing, and surface changes over heavy shadows. Use `--shadow-subtle` only for small lifts where a component needs separation. Avoid gradient-heavy backgrounds, decorative blobs, nested card layouts, and default stock-like visual effects.
 
-Use `--shadow-subtle` only for small lifts where a component needs separation. Avoid gradient-heavy backgrounds, decorative blobs, nested card layouts, and default stock-like visual effects. Real client photography should replace placeholders when available.
+Real client photography (85 images pulled from their current site across kitchens, bathrooms, laundries, and joinery) should replace all placeholders. The images are the decoration.
 
 ## Shapes
 
-Radii are restrained: `2px`, `4px`, and `8px` cover most UI needs. Buttons default to `4px`. Cards and repeated content items may use `8px`. Pill radius is reserved for compact tags or controls where the shape is expected.
+Radii are restrained: `2px`, `4px`, and `8px` cover most UI needs. Buttons default to `4px`. Cards and repeated content items may use `8px`. Gallery images have no radius — let them bleed full. Pill radius is reserved for compact tags or controls where the shape is expected.
 
-Adapt shape cautiously:
-
-- Professional service: reduce radii and keep the neutral palette.
-- Trade or local service: preserve simple radii and strengthen CTA clarity.
-- Hospitality or lifestyle: use warmer neutrals and more generous image sections.
-- Health or care: use softer palette choices while preserving accessible contrast.
+For Timberon (trade / local service): preserve simple radii and strengthen CTA clarity. Warm neutrals, straightforward shapes, photography as the hero.
 
 ## Components
 
 Compose pages from existing components before creating new ones. Prefer collection-driven components for services, posts, testimonials, and FAQs.
 
-Use `Hero` only on the home page unless the client needs a campaign-style landing page. Use `PageIntro` for inner pages. Public pages should not contain placeholder explanations before launch.
+Use `Hero` only on the home page. Use `PageIntro` for inner pages.
 
 Current variant surface:
 
-- `Hero`: `simple`, `split-media`, `centered`, `service-led`; media can be `left` or `right` where applicable.
-- `ServiceGrid`: `grid`, `list`, `featured-first`.
-- `Testimonials`: `grid`, `stacked`.
-- `GalleryBlock`: `grid`, `feature-left`, `feature-right`.
-- `CTABand`: `band`, `split`, `inline`.
+- `Hero`: `image-full` is the right choice for Timberon. Full-bleed background photo with a dark overlay gradient, condensed uppercase heading, solid-light and outline-light buttons.
+- `ServiceGrid`: `icon-grid`. Each room type gets an icon and a short description. The fallback icons in `ServiceGrid.astro` map well to cabinet-making (tool, grid, cross-section, wrench).
+- `Testimonials`: `grid` layout.
+- `GalleryBlock`: `portfolio` variant with horizontal scrolling track. Project images with suburb-based descriptions.
+- `CTABand`: `band` variant for the footer CTA. Should feel substantial without being aggressive.
 
 Client-editable homepage variant controls live in `src/content/pages/home.json` and Decap's Pages collection. Keep client-editable variant controls limited to safe layout choices. Do not expose raw spacing, color, typography, or arbitrary component controls to clients.
 
 ## Do's and Don'ts
 
-Do keep copy specific to the client, use useful alt text, preserve visible focus states, and keep semantic landmarks intact.
+Do keep copy specific to Timberon: real service details, real client quotes (Jane Gorman Interior Decorators, Sarah Chen, Mark & Lisa D'Amico), real suburbs, real contact info.
 
-Do use real proof points, real service details, real testimonials, and clear contact paths.
+Do lead with the quote path — that is the gap their current site has (0 forms, no quote flow).
 
-Do add new content fields to `public/admin/config.yml` whenever a schema changes, and document new collections in `README.md`.
+Do use their real project photography. It is the strongest brand asset they have.
 
-Don't add UI libraries unless explicitly requested.
+Do write copy that sounds like a cabinet maker talking to a homeowner. Direct, benefit-led, material-conscious.
 
-Don't add client-side JavaScript for static presentation sections.
+Don't use stock imagery of cabinetry.
 
-Don't create new components until a repeated pattern appears or a page becomes hard to scan.
+Don't cool-blue the palette. Timberon is a warm-material brand.
 
-Don't let the template's neutral defaults become the final brand direction when a client brief provides stronger guidance.
+Don't add decorative CSS effects — no parallax, no particle backgrounds, no animated counters.
+
+Don't over-design the form. Make it functional and obvious.
+
+Don't call attention to the fact that it is a concept. No mockup labels, no disclaimers in the UI.
+
+Don't introduce a second accent colour until the primary palette is settled.
+
+Don't let the template's neutral defaults become the final brand direction.
