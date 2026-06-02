@@ -229,8 +229,7 @@ const showPanel = variant !== 'centered' && variant !== 'image-full';
     padding-block: clamp(5rem, 10vw, 9rem);
     border-bottom: none;
     overflow: hidden;
-    background:
-      linear-gradient(to bottom, #1a1008, #2d1f0e, #3d2a14);
+    background: var(--color-overlay-strong);
   }
 
   .hero--image-full .hero__bg {
@@ -246,10 +245,7 @@ const showPanel = variant !== 'centered' && variant !== 'image-full';
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(135deg, rgba(40, 22, 8, 0.6) 0%, transparent 50%),
-      linear-gradient(225deg, rgba(80, 40, 15, 0.35) 0%, transparent 45%),
-      linear-gradient(to top, rgba(25, 12, 4, 0.55) 0%, transparent 30%);
+    background: var(--color-overlay-strong);
   }
 
   .hero--image-full .hero__overlay {
@@ -258,9 +254,8 @@ const showPanel = variant !== 'centered' && variant !== 'image-full';
     background: linear-gradient(
       to right,
       var(--color-overlay-strong) 0%,
-      rgba(0, 0, 0, 0.55) 38%,
-      rgba(0, 0, 0, 0.18) 65%,
-      transparent 100%
+      rgba(0, 0, 0, 0.35) 40%,
+      transparent 70%
     );
     z-index: 1;
   }

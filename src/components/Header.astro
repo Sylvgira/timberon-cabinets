@@ -36,7 +36,7 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
         </a>
       ))}
     </nav>
-    <a class="site-header__cta button button--secondary" href={site.ctaUrl ?? '/contact/'}>
+    <a class="site-header__cta button" href={site.ctaUrl ?? '/contact/'}>
       {site.ctaLabel ?? 'Enquire'}
     </a>
   </div>
@@ -58,7 +58,7 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
 
   .site-header__brand {
     color: var(--brand-name-color);
-    font-weight: 800;
+    font-weight: 600;
     text-decoration: none;
   }
 
@@ -71,7 +71,7 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
   .site-header__nav a {
     color: var(--color-text-muted);
     font-size: var(--text-sm);
-    font-weight: 650;
+    font-weight: 600;
     text-decoration: none;
   }
 
