@@ -54,13 +54,16 @@ const serviceImages: Record<string, string> = {
   <!-- ── Introduction: two-column editorial statement ── -->
   <Introduction />
 
+  <!-- ── Selected Work: 3-column project grid ── -->
+  <SelectedWork projects={projects} />
+
+  <!-- ── Thin divider between sections ── -->
+  <hr class="section-divider" aria-hidden="true" />
+
   <!-- ── Services: 5 image tiles with labels below ── -->
   <section class="services-inline">
     <div class="container">
-      <div class="services-inline__header">
-        <p class="eyebrow">What we build</p>
-        <h2>Cabinetry for every room</h2>
-      </div>
+      <p class="section-heading">OUR SERVICES</p>
 
       <div class="services-inline__track">
         {services.map((service) => (
@@ -72,7 +75,9 @@ const serviceImages: Record<string, string> = {
                 loading="lazy"
               />
             </div>
-            <span class="services-inline__label">{service.data.title}</span>
+            <div class="services-inline__label-block">
+              <span class="services-inline__label">{service.data.title}</span>
+            </div>
           </a>
         ))}
       </div>
@@ -81,9 +86,6 @@ const serviceImages: Record<string, string> = {
 
   <!-- ── Process: split layout, 4 steps + image ── -->
   <ProcessStrip />
-
-  <!-- ── Selected Work: 3-column project grid ── -->
-  <SelectedWork projects={projects} />
 
   <!-- ── Testimonial: quote-mark block ── -->
   <FeatureQuote
@@ -243,19 +245,32 @@ const serviceImages: Record<string, string> = {
   }
 
   /* ═══════════════════════════════════════════════
-     Services — 5 image tiles, labels below
+     Shared section utilities
+     ═══════════════════════════════════════════════ */
+
+  .section-heading {
+    margin-bottom: var(--space-6);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .section-divider {
+    margin: 0;
+    border: none;
+    border-top: 1px solid var(--color-border);
+    width: min(100% - (var(--gutter) * 2), var(--container));
+    margin-inline: auto;
+  }
+
+  /* ═══════════════════════════════════════════════
+     Services — 5 portrait image tiles, labels below
      ═══════════════════════════════════════════════ */
 
   .services-inline {
-    padding-block: var(--section-y);
-  }
-
-  .services-inline__header {
-    margin-bottom: var(--space-7);
-  }
-
-  .services-inline__header h2 {
-    margin-bottom: 0;
+    padding-block: calc(var(--section-y) * 0.75);
   }
 
   .services-inline__track {
@@ -272,8 +287,7 @@ const serviceImages: Record<string, string> = {
 
   .services-inline__image-wrap {
     overflow: hidden;
-    aspect-ratio: 3 / 2;
-    margin-bottom: var(--space-3);
+    aspect-ratio: 4 / 5;
   }
 
   .services-inline__image-wrap img {
@@ -281,17 +295,17 @@ const serviceImages: Record<string, string> = {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
   }
 
-  .services-inline__item:hover .services-inline__image-wrap img {
-    transform: scale(1.04);
+  .services-inline__label-block {
+    background: var(--color-soft);
+    padding: 0.75rem 0.9rem;
   }
 
   .services-inline__label {
     display: block;
-    font-size: var(--text-lg);
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 500;
     color: var(--color-heading);
   }
 
