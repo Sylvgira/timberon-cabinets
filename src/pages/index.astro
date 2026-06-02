@@ -1,12 +1,10 @@
 ---
 import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import Hero from '@components/Hero.astro';
 import Introduction from '@components/Introduction.astro';
 import SelectedWork from '@components/SelectedWork.astro';
 import ProcessStrip from '@components/ProcessStrip.astro';
 import FeatureQuote from '@components/FeatureQuote.astro';
-import CTABand from '@components/CTABand.astro';
 import { byOrder } from '../lib/content';
 
 const site = await getEntry('settings', 'site');
@@ -22,82 +20,347 @@ const featureTestimonial = testimonials.find((t) => t.id === 'sarah-chen') ?? te
 
 /* Service images: map each service to a suitable project image */
 const serviceImages: Record<string, string> = {
-  kitchens: '/uploads/_MG_5683.jpg',
-  bathrooms: '/uploads/_MG_5694.jpg',
-  laundries: '/uploads/_MG_5763.jpg',
-  wardrobes: '/uploads/_MG_5657.jpg',
-  cabinetry: '/uploads/SNY05537-2.jpg'
+  kitchens: '/timberon-cabinets/uploads/_MG_5683.jpg',
+  bathrooms: '/timberon-cabinets/uploads/_MG_5694.jpg',
+  laundries: '/timberon-cabinets/uploads/_MG_5763.jpg',
+  wardrobes: '/timberon-cabinets/uploads/_MG_5657.jpg',
+  cabinetry: '/timberon-cabinets/uploads/SNY05537-2.jpg'
 };
 ---
 
 <BaseLayout>
-  <!-- Hero: full-screen, minimal UI, single CTA -->
-  <Hero
-    variant={hero?.variant}
-    eyebrow={hero?.eyebrow}
-    title={hero?.title ?? `A clean starting point for ${site?.data.name ?? 'your client'}`}
-    intro={hero?.intro ?? 'Replace the content, tune the variables, and keep the structure simple.'}
-    primaryLabel={hero?.primaryLabel ?? 'Start a project'}
-    primaryUrl={hero?.primaryUrl ?? '/contact/'}
-    imageUrl={hero?.imageUrl}
-  />
+  <!-- ── Hero: full-bleed background image, minimal overlay, nav overlaid ── -->
+  <section class="home-hero">
+    <div
+      class="home-hero__bg"
+      style="background-image: url('/timberon-cabinets/uploads/IMG_9733.jpeg')"
+      aria-hidden="true"
+    ></div>
+    <div class="home-hero__overlay" aria-hidden="true"></div>
+    <div class="home-hero__inner container">
+      <div class="home-hero__content">
+        <h1 class="reveal">{hero?.title ?? 'Craftsmanship built into every detail.'}</h1>
+        <p class="home-hero__intro reveal">{hero?.intro ?? 'Cabinet makers serving Melbourne from our Thomastown workshop.'}</p>
+        <div class="reveal">
+          <a class="home-hero__button" href={hero?.primaryUrl ?? '/contact/'}>
+            {hero?.primaryLabel ?? 'Get a quote'} &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="home-hero__scroll" aria-hidden="true">&darr;</div>
+  </section>
 
-  <!-- Introduction: two-column editorial statement -->
+  <!-- ── Introduction: two-column editorial statement ── -->
   <Introduction />
 
-  <!-- Selected Work: full-width photography with captions -->
-  <SelectedWork projects={projects} />
-
-  <!-- Services: image-led collection, no cards or icons -->
+  <!-- ── Services: 5 image tiles with labels below ── -->
   <section class="services-inline">
     <div class="container">
       <div class="services-inline__header">
         <p class="eyebrow">What we build</p>
         <h2>Cabinetry for every room</h2>
       </div>
-    </div>
 
-    <div class="services-inline__track">
-      {services.map((service) => (
-        <a href={`/services/${service.id}/`} class="services-inline__item">
-          <div class="services-inline__image-wrap">
-            <img
-              src={serviceImages[service.id] ?? '/uploads/_MG_5701.jpg'}
-              alt={service.data.title}
-              loading="lazy"
-            />
-            <div class="services-inline__label">
-              <span class="services-inline__name">{service.data.title}</span>
+      <div class="services-inline__track">
+        {services.map((service) => (
+          <a href={`/services/${service.id}/`} class="services-inline__item">
+            <div class="services-inline__image-wrap">
+              <img
+                src={serviceImages[service.id] ?? '/timberon-cabinets/uploads/_MG_5701.jpg'}
+                alt={service.data.title}
+                loading="lazy"
+              />
             </div>
-          </div>
-        </a>
-      ))}
+            <span class="services-inline__label">{service.data.title}</span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
-  <!-- Process: simple sequence -->
+  <!-- ── Process: split layout, 4 steps + image ── -->
   <ProcessStrip />
 
-  <!-- Testimonial: single editorial quote -->
+  <!-- ── Selected Work: 3-column project grid ── -->
+  <SelectedWork projects={projects} />
+
+  <!-- ── Testimonial: quote-mark block ── -->
   <FeatureQuote
     quote={featureTestimonial?.data?.quote}
     name={featureTestimonial?.data?.name}
     role={featureTestimonial?.data?.role}
   />
 
-  <!-- Contact CTA -->
-  <CTABand
-    title="Ready to get started?"
-    text="Tell us about your project and we will arrange a design consultation. No obligation, just a clear conversation."
-    label="Get a quote"
-    href="/contact/"
-    variant={home?.data.ctaVariant ?? 'band'}
-  />
+  <!-- ── Contact CTA: split layout, text left + image right ── -->
+  <section class="cta-split">
+    <div class="cta-split__inner container">
+      <div class="cta-split__content">
+        <h2>Let's create something exceptional.</h2>
+        <p>Tell us about your project and we will arrange a design consultation. No obligation, just a clear conversation.</p>
+        <a class="home-hero__button" href="/contact/">Get a quote &rarr;</a>
+      </div>
+      <div class="cta-split__image">
+        <img
+          src="/timberon-cabinets/uploads/IMG_9068.jpg"
+          alt="Interior cabinetry"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
 </BaseLayout>
 
 <style is:global>
-  /* ── Scroll reveal animations ──
-     Gentle fades on scroll — architectural, not decorative. */
+  /* ═══════════════════════════════════════════════
+     Hero — full-bleed background, nav overlaid
+     ═══════════════════════════════════════════════ */
+
+  .home-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background: var(--color-overlay-strong);
+  }
+
+  .home-hero__bg {
+    position: absolute;
+    inset: 0;
+    background-position: center 35%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+
+  .home-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.15) 50%,
+      rgba(0, 0, 0, 0.05) 75%
+    );
+    z-index: 1;
+  }
+
+  .home-hero__inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .home-hero__content {
+    max-width: 38rem;
+  }
+
+  .home-hero__content h1 {
+    font-weight: 500;
+    font-size: var(--text-3xl);
+    line-height: var(--line-tight);
+    color: #ffffff;
+    margin-bottom: var(--space-5);
+  }
+
+  .home-hero__intro {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 34rem;
+    margin-bottom: var(--space-6);
+    line-height: 1.65;
+  }
+
+  .home-hero__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    background: var(--brand-primary);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: var(--text-base);
+    text-decoration: none;
+    line-height: 1;
+    transition: filter 0.2s ease;
+  }
+
+  .home-hero__button:hover {
+    filter: brightness(1.15);
+  }
+
+  .home-hero__scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.4);
+    animation: hero-scroll-bounce 2.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes hero-scroll-bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── Header overlay: transparent nav on the hero ── */
+
+  body:has(.home-hero) .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    border-bottom: none;
+    background: transparent;
+  }
+
+  body:has(.home-hero) .site-header__brand {
+    color: #ffffff;
+  }
+
+  body:has(.home-hero) .site-header__nav a {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  body:has(.home-hero) .site-header__nav a:hover,
+  body:has(.home-hero) .site-header__nav a[aria-current='page'] {
+    color: #ffffff;
+  }
+
+  body:has(.home-hero) .site-header__cta {
+    background: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  body:has(.home-hero) .site-header__cta:hover {
+    border-color: #ffffff;
+  }
+
+  /* ═══════════════════════════════════════════════
+     Services — 5 image tiles, labels below
+     ═══════════════════════════════════════════════ */
+
+  .services-inline {
+    padding-block: var(--section-y);
+  }
+
+  .services-inline__header {
+    margin-bottom: var(--space-7);
+  }
+
+  .services-inline__header h2 {
+    margin-bottom: 0;
+  }
+
+  .services-inline__track {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
+  }
+
+  .services-inline__item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .services-inline__image-wrap {
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+    margin-bottom: var(--space-3);
+  }
+
+  .services-inline__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .services-inline__item:hover .services-inline__image-wrap img {
+    transform: scale(1.04);
+  }
+
+  .services-inline__label {
+    display: block;
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-heading);
+  }
+
+  @media (max-width: 900px) {
+    .services-inline__track {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .services-inline__track {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ═══════════════════════════════════════════════
+     CTA split section — text left, image right
+     ═══════════════════════════════════════════════ */
+
+  .cta-split {
+    padding-block: var(--section-y);
+    background: var(--color-section);
+  }
+
+  .cta-split__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .cta-split__content h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: var(--space-4);
+  }
+
+  .cta-split__content p {
+    font-size: var(--text-md);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-6);
+    max-width: 34rem;
+  }
+
+  .cta-split__image {
+    overflow: hidden;
+  }
+
+  .cta-split__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  @media (max-width: 820px) {
+    .cta-split__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  /* ═══════════════════════════════════════════════
+     Scroll reveal animations
+     ═══════════════════════════════════════════════ */
+
   .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -152,79 +415,3 @@ const serviceImages: Record<string, string> = {
     observer.observe(el);
   }
 </script>
-
-<style>
-  /* ── Services inline section ── */
-  .services-inline {
-    padding-block: var(--section-y);
-  }
-
-  .services-inline__header {
-    margin-bottom: var(--space-7);
-  }
-
-  .services-inline__header h2 {
-    margin-bottom: 0;
-  }
-
-  .services-inline__track {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: var(--space-3);
-  }
-
-  .services-inline__item {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-    overflow: hidden;
-  }
-
-  .services-inline__image-wrap {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 3 / 4;
-  }
-
-  .services-inline__image-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-
-  .services-inline__item:hover .services-inline__image-wrap img {
-    transform: scale(1.04);
-  }
-
-  .services-inline__label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: var(--space-4);
-    background: linear-gradient(to top, rgba(17, 17, 17, 0.6), transparent);
-  }
-
-  .services-inline__name {
-    display: block;
-    color: #ffffff;
-    font-family: var(--font-display);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
-
-  @media (max-width: 900px) {
-    .services-inline__track {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  @media (max-width: 600px) {
-    .services-inline__track {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-</style>

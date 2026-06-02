@@ -13,16 +13,21 @@ const {
 ---
 
 <section class="feature-quote">
-  <div class="container container--narrow">
-    <figure class="feature-quote__figure">
-      <blockquote>
-        <p>{quote}</p>
-      </blockquote>
-      <figcaption>
+  <div class="container">
+    <div class="feature-quote__layout">
+      <div class="feature-quote__mark" aria-hidden="true">
+        <span>&ldquo;</span>
+      </div>
+      <div class="feature-quote__body">
+        <blockquote>
+          <p>{quote}</p>
+        </blockquote>
+      </div>
+      <div class="feature-quote__attribution">
         <strong>{name}</strong>
         {role && <span>{role}</span>}
-      </figcaption>
-    </figure>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -32,34 +37,80 @@ const {
     background: var(--color-section);
   }
 
-  .feature-quote__figure {
+  .feature-quote__layout {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  .feature-quote__mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5rem;
+    background: var(--brand-primary);
+    color: var(--brand-primary-contrast);
+    flex-shrink: 0;
+  }
+
+  .feature-quote__mark span {
+    font-size: 3rem;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .feature-quote__body blockquote {
     margin: 0;
-    text-align: center;
   }
 
-  .feature-quote__figure blockquote {
-    margin: 0 0 var(--space-6);
-  }
-
-  .feature-quote__figure blockquote p {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  .feature-quote__body blockquote p {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--color-heading);
     margin: 0;
     quotes: none;
+    max-width: 40rem;
   }
 
-  .feature-quote__figure figcaption {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
+  .feature-quote__attribution {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .feature-quote__attribution strong {
+    display: block;
     font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-heading);
+    margin-bottom: var(--space-1);
+  }
+
+  .feature-quote__attribution span {
+    display: block;
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
   }
 
-  .feature-quote__figure figcaption strong {
-    color: var(--color-heading);
-    font-weight: 600;
+  @media (max-width: 820px) {
+    .feature-quote__layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+      text-align: center;
+    }
+
+    .feature-quote__mark {
+      margin-inline: auto;
+    }
+
+    .feature-quote__body blockquote p {
+      max-width: none;
+    }
+
+    .feature-quote__attribution {
+      text-align: center;
+    }
   }
 </style>
