@@ -48,7 +48,17 @@
   --text-3xl: clamp(4rem, 9vw, 8rem);
   --line-tight: 1.02;
   --line-heading: 1.12;
-  --line-body: 1.65;
+  --line-body: 1.75;
+
+  /* Typography — section headings */
+  --text-h1: 3rem;
+  --text-h2: 1.75rem;
+  --line-h1: 1.167;
+  --line-h2: 1.286;
+  --weight-display: 500;
+  --weight-h1: 600;
+  --weight-h2: 500;
+  --weight-eyebrow: 600;
 
   /* Layout. */
   --container: 1120px;

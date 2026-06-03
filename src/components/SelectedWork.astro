@@ -25,7 +25,7 @@ const {
       <a href="/services/" class="selected-work__all-link">VIEW ALL WORK &rarr;</a>
     </div>
 
-    <div class="selected-work__grid">
+    <div class="selected-work__stack">
       {projects.map((project) => (
         <article class="selected-work__card">
           <div class="selected-work__image-wrap">
@@ -35,12 +35,15 @@ const {
               <div class="selected-work__placeholder" aria-hidden="true"></div>
             )}
           </div>
-          <div class="selected-work__info">
-            <div class="selected-work__info-row">
-              <strong class="selected-work__title">{project.title}</strong>
-              <span class="selected-work__description">{project.description ?? ''}</span>
+          <div class="selected-work__panel">
+            <div class="selected-work__panel-body">
+              <h3 class="selected-work__title">{project.title}</h3>
+              <p class="selected-work__location">Thomastown, VIC</p>
+              <p class="selected-work__description">{project.description ?? ''}</p>
             </div>
-            <span class="selected-work__location">Thomastown, VIC</span>
+            <a class="selected-work__cta" href="/services/">
+              VIEW PROJECT &rarr;
+            </a>
           </div>
         </article>
       ))}
@@ -73,22 +76,27 @@ const {
     color: var(--color-heading);
   }
 
-  .selected-work__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
+  .selected-work__stack {
+    display: flex;
+    flex-direction: column;
   }
 
   .selected-work__card {
-    display: block;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 0;
+    margin-bottom: var(--space-6);
     text-decoration: none;
     color: inherit;
   }
 
+  .selected-work__card:last-child {
+    margin-bottom: 0;
+  }
+
   .selected-work__image-wrap {
     overflow: hidden;
-    aspect-ratio: 4 / 3;
-    margin-bottom: var(--space-4);
+    aspect-ratio: 16 / 10;
   }
 
   .selected-work__image-wrap img {
@@ -104,62 +112,74 @@ const {
     background: var(--color-border);
   }
 
-  .selected-work__info-row {
+  .selected-work__panel {
+    padding: var(--space-6);
+    background: #F6F3EE;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: baseline;
-    gap: var(--space-3);
-    margin-bottom: var(--space-1);
+  }
+
+  .selected-work__panel-body {
+    flex: 1;
   }
 
   .selected-work__title {
-    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
     font-weight: 500;
+    line-height: var(--line-h2);
     color: var(--color-heading);
-    line-height: 1.25;
-    flex-shrink: 0;
-  }
-
-  .selected-work__description {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    line-height: 1.4;
-    text-align: right;
+    margin: 0 0 var(--space-3);
   }
 
   .selected-work__location {
-    display: block;
-    font-size: var(--text-xs);
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-text-muted);
+    margin: 0 0 var(--space-4);
+  }
+
+  .selected-work__description {
+    font-size: var(--text-base);
+    line-height: var(--line-body);
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-5);
+  }
+
+  .selected-work__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-end;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .selected-work__cta:hover {
+    color: var(--brand-primary);
   }
 
   @media (max-width: 860px) {
-    .selected-work__grid {
-      grid-template-columns: repeat(2, 1fr);
+    .selected-work__card {
+      grid-template-columns: 1fr;
+    }
+
+    .selected-work__image-wrap {
+      aspect-ratio: 16 / 9;
     }
   }
 
   @media (max-width: 560px) {
-    .selected-work__grid {
-      grid-template-columns: 1fr;
-    }
-
     .selected-work__header {
       flex-direction: column;
       align-items: flex-start;
       gap: var(--space-3);
-    }
-
-    .selected-work__info-row {
-      flex-direction: column;
-      gap: var(--space-1);
-    }
-
-    .selected-work__description {
-      text-align: left;
     }
   }
 </style>

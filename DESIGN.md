@@ -5,37 +5,37 @@ description: "Warm, material-focused, and trade-direct. A cabinet maker's brand 
 colors:
   primary: "#2C1810"
   on-primary: "#ffffff"
-  secondary: "#f7f5f0"
-  accent: "#1a1a1a"
+  secondary: "#F6F3EE"
+  accent: "#111111"
   neutral: "#ffffff"
-  surface: "#f7f5f0"
-  text: "#1a1a1a"
-  text-muted: "#6b6258"
-  border: "#d4ccc4"
+  surface: "#F6F3EE"
+  text: "#111111"
+  text-muted: "#6E675F"
+  border: "#DDD7CF"
 typography:
   h1:
     fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
-    fontSize: "clamp(3rem, 8vw, 5.5rem)"
-    fontWeight: 800
-    lineHeight: 0.92
-    letterSpacing: "-0.015em"
+    fontSize: "clamp(4rem, 9vw, 8rem)"
+    fontWeight: 500
+    lineHeight: 1.02
+    letterSpacing: "0em"
   h2:
     fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
-    fontSize: "2.25rem"
-    fontWeight: 700
-    lineHeight: 1.12
+    fontSize: "1.75rem"
+    fontWeight: 500
+    lineHeight: 1.286
     letterSpacing: "0em"
   body:
     fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
-    lineHeight: 1.65
+    lineHeight: 1.75
     letterSpacing: "0em"
   eyebrow:
     fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif"
-    fontSize: "0.78rem"
-    fontWeight: 700
-    lineHeight: 1.2
+    fontSize: "0.75rem"
+    fontWeight: 600
+    lineHeight: 1.667
     letterSpacing: "0.08em"
 rounded:
   xs: "2px"
@@ -53,12 +53,13 @@ components:
   button-primary:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.on-primary}"
-    rounded: "{rounded.sm}"
+    rounded: "{rounded.xs}"
     padding: "0.75rem 1.1rem"
+    textTransform: "uppercase"
   button-secondary:
     backgroundColor: "{colors.neutral}"
     textColor: "{colors.text}"
-    rounded: "{rounded.sm}"
+    rounded: "{rounded.xs}"
     padding: "0.75rem 1.1rem"
   link:
     textColor: "{colors.accent}"
@@ -87,11 +88,11 @@ The palette is grounded, warm, and trade-direct. It replaces the template's defa
 
 - **Primary (#2C1810):** Default action color. A warm dark brown — button fills, links, accent elements. Reads as reliable, not trendy.
 - **On Primary (#ffffff):** Text on primary backgrounds. Preserves WCAG AA contrast.
-- **Accent (#1a1a1a):** Strong near-black for headings and brand marks. Keeps sharp definition against warm backgrounds.
-- **Surface (#f7f5f0):** Warm off-white section background for separating content bands. The warmth should be barely perceptible — just enough to avoid the coolness of pure #f7f7f7.
-- **Text (#1a1a1a):** Main readable foreground.
-- **Text Muted (#6b6258):** Paragraphs, captions, metadata, and secondary labels. A warm mid-grey.
-- **Border (#d4ccc4):** Warm-toned border. Avoids the sterile blue-grey of typical web borders.
+- **Accent (#111111):** Strong near-black for headings and brand marks. Keeps sharp definition against warm backgrounds.
+- **Surface (#F6F3EE):** Warm off-white section background for separating content bands. The warmth should be barely perceptible — just enough to avoid the coolness of pure #f7f7f7.
+- **Text (#111111):** Main readable foreground.
+- **Text Muted (#6E675F):** Paragraphs, captions, metadata, and secondary labels. A warm mid-grey.
+- **Border (#DDD7CF):** Warm-toned border. Avoids the sterile blue-grey of typical web borders.
 - **Neutral (#ffffff):** Page background and card surfaces. Clean, open, lets photography do the work.
 
 Update colors in this order: `--brand-primary`, `--brand-primary-contrast`, `--brand-name-color`, `--brand-secondary`, then `--brand-accent`. Component-specific color overrides should come only after semantic aliases are insufficient.
@@ -100,7 +101,7 @@ Update colors in this order: `--brand-primary`, `--brand-primary-contrast`, `--b
 
 The system uses Inter by default through `--font-sans`, with system fallbacks. Typography stays direct and trade-confident. No decorative flourishes — the confidence is in the words, not the font choice.
 
-Use one `h1` per page. The hero uses an uppercase condensed style (`--font-condensed`) at 800 weight with tight tracking — this reads solid and crafted, matching the "built to last" message. Inner pages use `PageIntro` and tighter hierarchy. Keep letter spacing at `0` for normal headings and body text. Reserve uppercase tracking for small eyebrow labels only.
+Use one `h1` per page. The hero/display heading uses Inter at 500 weight with tight line-height — this reads solid and crafted, matching the "built to last" message. Inner pages use `PageIntro` and tighter hierarchy. Keep letter spacing at `0` for normal headings and body text. Reserve uppercase tracking for small eyebrow labels and navigation only.
 
 Change `--font-body` and `--font-display` only if a clear brand direction emerges. Avoid adding web font dependencies unless they materially improve the finished comp.
 
@@ -134,7 +135,7 @@ Real client photography (85 images pulled from their current site across kitchen
 
 ## Shapes
 
-Radii are restrained: `2px`, `4px`, and `8px` cover most UI needs. Buttons default to `4px`. Cards and repeated content items may use `8px`. Gallery images have no radius — let them bleed full. Pill radius is reserved for compact tags or controls where the shape is expected.
+Radii are restrained: `2px`, `4px`, and `8px` cover most UI needs. Buttons default to `2px` (nearly square, warm/editorial). Cards and repeated content items may use `8px`. Gallery images have no radius — let them bleed full. Pill radius is reserved for compact tags or controls where the shape is expected.
 
 For Timberon (trade / local service): preserve simple radii and strengthen CTA clarity. Warm neutrals, straightforward shapes, photography as the hero.
 

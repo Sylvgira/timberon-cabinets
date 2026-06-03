@@ -80,11 +80,6 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
     color: var(--color-text);
   }
 
-  .site-header__cta {
-    min-height: 2.5rem;
-    padding-inline: var(--space-4);
-  }
-
   @media (max-width: 760px) {
     .site-header__inner {
       grid-template-columns: 1fr auto;
@@ -98,10 +93,6 @@ const isCurrent = (href: string) => pathname === href || pathname.startsWith(hre
       justify-content: space-between;
       overflow-x: auto;
       padding-top: var(--space-2);
-    }
-
-    .site-header__cta {
-      justify-self: end;
     }
   }
 </style>

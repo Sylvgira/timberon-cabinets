@@ -78,11 +78,9 @@ h1 {
 }
 
 h2 {
-  font-weight: 600;
-}
-
-h2 {
-  font-size: clamp(2rem, 4vw, var(--text-2xl));
+  font-weight: var(--weight-h2);
+  font-size: clamp(1.5rem, 3vw, var(--text-h2));
+  line-height: var(--line-h2);
 }
 
 h3 {
@@ -110,8 +108,9 @@ p {
 .eyebrow {
   margin-bottom: var(--space-3);
   color: var(--color-text-muted);
-  font-size: var(--text-xs);
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: var(--weight-eyebrow);
+  line-height: 1.667;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -120,15 +119,17 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.9rem;
+  min-height: 3rem;
   padding: 0.75rem 1.1rem;
   border: 1px solid var(--color-button);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   background: var(--color-button);
   color: var(--color-button-text);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .button:hover {
@@ -136,9 +137,9 @@ p {
 }
 
 .button--secondary {
-  background: transparent;
+  background: #ffffff;
   color: var(--color-text);
-  border-color: var(--color-rule);
+  border-color: var(--color-border);
 }
 
 .button--solid-light {
