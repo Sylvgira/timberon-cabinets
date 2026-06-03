@@ -98,12 +98,14 @@ const serviceImages: Record<string, string> = {
     role={featureTestimonial?.data?.role}
   />
 
-  <!-- ── Contact CTA: split layout, text left + image right ── -->
+  <!-- ── Contact CTA: 3-column layout ── -->
   <section class="cta-split">
     <div class="cta-split__inner container">
-      <div class="cta-split__content">
+      <div class="cta-split__heading-block">
         <p class="cta-split__kicker">Let's work together</p>
         <h2 class="cta-split__title">Let's create something exceptional.</h2>
+      </div>
+      <div class="cta-split__action-block">
         <p class="cta-split__text">We're here to help bring your project to life. Get in touch to discuss your ideas or request a quote.</p>
         <a class="cta-split__button" href="/contact/">Request a quote &rarr;</a>
       </div>
@@ -245,27 +247,6 @@ const serviceImages: Record<string, string> = {
     50% { transform: translateX(-50%) translateY(6px); }
   }
 
-  /* ── Header overlay: transparent nav on the hero ── */
-
-  body:has(.home-hero) .site-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    border-bottom: none;
-    background: transparent;
-  }
-
-  body:has(.home-hero) .site-header__nav a {
-    color: #ffffff;
-  }
-
-  body:has(.home-hero) .site-header__nav a:hover,
-  body:has(.home-hero) .site-header__nav a[aria-current='page'] {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
   /* ═══════════════════════════════════════════════
      Shared section utilities
      ═══════════════════════════════════════════════ */
@@ -344,7 +325,7 @@ const serviceImages: Record<string, string> = {
   }
 
   /* ═══════════════════════════════════════════════
-     CTA split section — text left, image right
+     CTA — 3-column layout
      ═══════════════════════════════════════════════ */
 
   .cta-split {
@@ -354,7 +335,7 @@ const serviceImages: Record<string, string> = {
 
   .cta-split__inner {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1.2fr;
     gap: var(--space-8);
     align-items: center;
   }
@@ -372,16 +353,21 @@ const serviceImages: Record<string, string> = {
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 500;
     line-height: 1.08;
-    margin-bottom: var(--space-4);
-    max-width: 30rem;
+    margin: 0;
+  }
+
+  .cta-split__action-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
   }
 
   .cta-split__text {
-    font-size: var(--text-md);
+    font-size: var(--text-base);
     line-height: 1.7;
     color: var(--color-text-muted);
-    margin-bottom: var(--space-6);
-    max-width: 32rem;
+    margin: 0;
+    max-width: 28rem;
   }
 
   .cta-split__button {
@@ -398,6 +384,7 @@ const serviceImages: Record<string, string> = {
     letter-spacing: 0.06em;
     line-height: 1;
     border: none;
+    align-self: flex-start;
     transition: filter 0.2s ease;
   }
 
@@ -408,6 +395,7 @@ const serviceImages: Record<string, string> = {
   .cta-split__image {
     overflow: hidden;
     aspect-ratio: 3 / 4;
+    max-height: 28rem;
   }
 
   .cta-split__image img {
@@ -426,6 +414,7 @@ const serviceImages: Record<string, string> = {
     .cta-split__image {
       order: -1;
       aspect-ratio: 4 / 3;
+      max-height: none;
     }
   }
 
