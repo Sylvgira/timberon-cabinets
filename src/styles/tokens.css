@@ -61,7 +61,7 @@
   --weight-eyebrow: 600;
 
   /* Layout. */
-  --container: 1120px;
+  --container: 1320px;
   --container-narrow: 760px;
   --gutter: clamp(1rem, 4vw, 2rem);
   --section-y: clamp(4rem, 9vw, 7rem);
