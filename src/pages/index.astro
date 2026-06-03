@@ -244,21 +244,17 @@ const serviceImages: Record<string, string> = {
     left: 0;
     right: 0;
     z-index: 20;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    background: linear-gradient(
-      to bottom,
-      rgba(30, 18, 10, 0.7) 0%,
-      rgba(30, 18, 10, 0.35) 100%
-    );
+    border-bottom: none;
+    background: transparent;
   }
 
   body:has(.home-hero) .site-header__nav a {
-    color: rgba(255, 255, 255, 0.82);
+    color: #ffffff;
   }
 
   body:has(.home-hero) .site-header__nav a:hover,
   body:has(.home-hero) .site-header__nav a[aria-current='page'] {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.7);
   }
 
   /* ═══════════════════════════════════════════════
