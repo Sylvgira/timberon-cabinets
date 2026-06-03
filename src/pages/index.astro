@@ -247,6 +247,27 @@ const serviceImages: Record<string, string> = {
     50% { transform: translateX(-50%) translateY(6px); }
   }
 
+  /* ── Header overlay: white nav links on the hero ── */
+
+  body:has(.home-hero) .site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    border-bottom: none;
+    background: transparent;
+  }
+
+  body:has(.home-hero) .site-header__nav a {
+    color: #ffffff;
+  }
+
+  body:has(.home-hero) .site-header__nav a:hover,
+  body:has(.home-hero) .site-header__nav a[aria-current='page'] {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
   /* ═══════════════════════════════════════════════
      Shared section utilities
      ═══════════════════════════════════════════════ */

@@ -53,8 +53,8 @@ const isCurrent = (item: { label: string; href: string; exact?: boolean }) => {
 
 <style>
   .site-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    background: #111111;
+    border-bottom: 1px solid var(--color-rule);
+    background: var(--color-page);
   }
 
   .site-header__inner {
@@ -84,7 +84,7 @@ const isCurrent = (item: { label: string; href: string; exact?: boolean }) => {
   }
 
   .site-header__nav a {
-    color: #ffffff;
+    color: var(--color-text);
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -95,7 +95,7 @@ const isCurrent = (item: { label: string; href: string; exact?: boolean }) => {
 
   .site-header__nav a:hover,
   .site-header__nav a[aria-current='page'] {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--brand-primary);
   }
 
   @media (max-width: 760px) {
