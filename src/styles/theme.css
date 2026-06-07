@@ -68,7 +68,8 @@ h3 {
   color: var(--color-heading);
   font-family: var(--font-display);
   line-height: var(--line-heading);
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
 }
 
 h1 {
@@ -101,7 +102,19 @@ p {
   margin-inline: auto;
 }
 
-.flow > * + * {
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+}
+
+@media (max-width: 720px) {
+  .grid-12 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.flow>*+* {
   margin-top: var(--flow-space, var(--space-5));
 }
 
@@ -125,7 +138,7 @@ p {
   border-radius: var(--radius-xs);
   background: var(--color-button);
   color: var(--color-button-text);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   text-decoration: none;
   text-transform: uppercase;
@@ -208,8 +221,8 @@ p {
 /* ── Section spacing ──
    Same-colour stacked sections compress the gap between them.
    Sections with different backgrounds keep full spacing. */
-.section:not(.section--surface) + .section:not(.section--surface),
-.section--surface + .section--surface {
+.section:not(.section--surface)+.section:not(.section--surface),
+.section--surface+.section--surface {
   padding-top: 0;
 }
 

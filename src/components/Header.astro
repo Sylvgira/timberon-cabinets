@@ -112,9 +112,9 @@ const isCurrent = (item: { label: string; href: string; exact?: boolean }) => {
 
     .site-header__nav {
       flex: 1 1 100%;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      justify-content: flex-start;
       gap: var(--space-3);
-      overflow-x: auto;
     }
 
     .site-header__nav a {

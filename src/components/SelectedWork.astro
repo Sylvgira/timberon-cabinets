@@ -11,21 +11,21 @@ interface Props {
 
 const {
   projects = [
-    { title: 'Kitchen renovation', description: 'Custom cabinetry, Ivanhoe', imageUrl: '/timberon-cabinets/uploads/_MG_5701.jpg' },
-    { title: 'Bathroom vanity', description: 'Slimline joinery, Reservoir', imageUrl: '/timberon-cabinets/uploads/_MG_5694.jpg' },
-    { title: 'Laundry fit-out', description: 'Full-height cabinetry, Preston', imageUrl: '/timberon-cabinets/uploads/_MG_5763.jpg' }
+    { title: 'Kitchen renovation', description: 'Custom cabinetry, Ivanhoe', imageUrl: '/timberon-cabinets/uploads/_MG_5428.jpg' },
+    { title: 'Bathroom vanity', description: 'Slimline joinery, Reservoir', imageUrl: '/timberon-cabinets/uploads/_MG_5515.jpg' },
+    { title: 'Laundry fit-out', description: 'Full-height cabinetry, Preston', imageUrl: '/timberon-cabinets/uploads/_MG_5463.jpg' }
   ]
 } = Astro.props;
 ---
 
 <section class="selected-work">
   <div class="container">
-    <div class="selected-work__header">
+    <div class="selected-work__header grid-12">
       <p class="section-heading">SELECTED WORK</p>
       <a href="/services/" class="selected-work__all-link">VIEW ALL WORK &rarr;</a>
     </div>
 
-    <div class="selected-work__grid">
+    <div class="selected-work__grid grid-12">
       {projects.map((project) => (
         <article class="selected-work__card">
           <div class="selected-work__image-wrap">
@@ -55,13 +55,18 @@ const {
   }
 
   .selected-work__header {
-    display: flex;
-    justify-content: space-between;
     align-items: baseline;
     margin-bottom: var(--space-7);
   }
 
+  .selected-work__header .section-heading {
+    grid-column: 1 / span 6;
+    margin-bottom: 0;
+  }
+
   .selected-work__all-link {
+    grid-column: 10 / span 3;
+    justify-self: end;
     color: var(--color-text-muted);
     font-size: var(--text-sm);
     font-weight: 600;
@@ -74,12 +79,11 @@ const {
   }
 
   .selected-work__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
+    row-gap: var(--space-7);
   }
 
   .selected-work__card {
+    grid-column: span 4;
     display: block;
     text-decoration: none;
     color: inherit;
@@ -96,6 +100,11 @@ const {
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.45s ease;
+  }
+
+  .selected-work__card:hover .selected-work__image-wrap img {
+    transform: scale(1.04);
   }
 
   .selected-work__placeholder {
@@ -137,20 +146,32 @@ const {
   }
 
   @media (max-width: 860px) {
-    .selected-work__grid {
-      grid-template-columns: repeat(2, 1fr);
+    .selected-work__header .section-heading {
+      grid-column: 1 / span 6;
+    }
+
+    .selected-work__all-link {
+      grid-column: 7 / span 6;
+    }
+
+    .selected-work__card {
+      grid-column: span 6;
     }
   }
 
   @media (max-width: 560px) {
-    .selected-work__grid {
-      grid-template-columns: 1fr;
+    .selected-work__header {
+      row-gap: var(--space-3);
     }
 
-    .selected-work__header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-3);
+    .selected-work__header .section-heading,
+    .selected-work__all-link,
+    .selected-work__card {
+      grid-column: 1;
+    }
+
+    .selected-work__all-link {
+      justify-self: start;
     }
 
     .selected-work__info-row {
