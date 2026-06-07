@@ -13,10 +13,10 @@
   "ctaVariant": "band",
   "gallery": [
     { "title": "Kitchen renovation", "description": "Custom cabinetry, Ivanhoe", "imageUrl": "/timberon-cabinets/uploads/_MG_5428.jpg" },
-    { "title": "Bathroom vanity", "description": "Slimline joinery, Reservoir", "imageUrl": "/timberon-cabinets/uploads/_MG_5515.jpg" },
     { "title": "Laundry fit-out", "description": "Full-height cabinetry, Preston", "imageUrl": "/timberon-cabinets/uploads/_MG_5463.jpg" },
-    { "title": "Walk-in wardrobe", "description": "Custom storage system, Epping", "imageUrl": "/timberon-cabinets/uploads/_MG_5445.jpg" },
+    { "title": "Bathroom vanity", "description": "Slimline joinery, Reservoir", "imageUrl": "/timberon-cabinets/uploads/_MG_5515.jpg" },
     { "title": "Kitchen cabinetry", "description": "Hamptons-style joinery, Kew", "imageUrl": "/timberon-cabinets/uploads/Ritchies-Mum1.jpg" },
-    { "title": "Bathroom joinery", "description": "Floating vanity, Thornbury", "imageUrl": "/timberon-cabinets/uploads/_MG_5660.jpg" }
+    { "title": "Bathroom joinery", "description": "Floating vanity, Thornbury", "imageUrl": "/timberon-cabinets/uploads/_MG_5660.jpg" },
+    { "title": "Walk-in wardrobe", "description": "Custom storage system, Epping", "imageUrl": "/timberon-cabinets/uploads/_MG_5445.jpg" }
   ]
 }

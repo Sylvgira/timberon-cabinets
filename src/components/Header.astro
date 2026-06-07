@@ -69,6 +69,11 @@ const isCurrent = (item: { label: string; href: string; exact?: boolean }) => {
     align-items: center;
     text-decoration: none;
     flex-shrink: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .site-header__brand:hover {
+    opacity: 0.75;
   }
 
   .site-header__logo {
