@@ -19,7 +19,14 @@ const isDark = variant === 'dark';
   <div class="site-footer__inner container">
     <div class="site-footer__brand">
       <a href="/" aria-label={`${site.name} home`}>
-        <span class="site-footer__logo" aria-hidden="true"></span>
+        <img
+          class="site-footer__logo"
+          src="/timberon-cabinets/uploads/brand/tc-logo.png"
+          alt="Timberon Cabinets"
+          width="1215"
+          height="490"
+          loading="lazy"
+        />
       </a>
     </div>
     <nav class="site-footer__nav" aria-label="Footer navigation">
@@ -57,12 +64,8 @@ const isDark = variant === 'dark';
 
   .site-footer__logo {
     display: block;
-    width: 7.25rem;
-    height: calc(7.25rem * 490 / 1215);
-    aspect-ratio: 1215 / 490;
-    background: var(--brand-primary);
-    mask: url('/timberon-cabinets/uploads/brand/tc-logo.png') center / contain no-repeat;
-    -webkit-mask: url('/timberon-cabinets/uploads/brand/tc-logo.png') center / contain no-repeat;
+    height: 2rem;
+    width: auto;
   }
 
   .site-footer__nav {
@@ -107,7 +110,7 @@ const isDark = variant === 'dark';
   }
 
   .site-footer--dark .site-footer__logo {
-    background: #ffffff;
+    filter: brightness(0) saturate(100%) invert(1);
   }
 
   .site-footer--dark .site-footer__brand a:hover {
