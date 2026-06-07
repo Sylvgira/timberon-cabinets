@@ -47,6 +47,11 @@ const isCurrent = (item: { label: string; href: string; exact?: boolean }) => {
           {item.label}
         </a>
       ))}
+      {site.ctaLabel && site.ctaUrl && (
+        <a href={site.ctaUrl} class="site-header__cta">
+          {site.ctaLabel}
+        </a>
+      )}
     </nav>
   </div>
 </header>
@@ -103,6 +108,27 @@ const isCurrent = (item: { label: string; href: string; exact?: boolean }) => {
     color: var(--brand-primary);
   }
 
+  .site-header__cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.25rem;
+    background: var(--brand-primary);
+    color: #fff !important;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .site-header__cta:hover {
+    background: var(--brand-primary-hover, var(--brand-primary));
+    transform: translateY(-1px);
+    color: #fff !important;
+  }
+
   @media (max-width: 760px) {
     .site-header__inner {
       flex-wrap: wrap;
@@ -125,6 +151,11 @@ const isCurrent = (item: { label: string; href: string; exact?: boolean }) => {
     .site-header__nav a {
       font-size: 0.72rem;
       letter-spacing: 0.1em;
+    }
+
+    .site-header__cta {
+      font-size: 0.68rem;
+      padding: 0.4rem 1rem;
     }
   }
 </style>
