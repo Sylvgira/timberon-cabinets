@@ -18,7 +18,9 @@ const isDark = variant === 'dark';
 <footer class:list={['site-footer', isDark && 'site-footer--dark']}>
   <div class="site-footer__inner container">
     <div class="site-footer__brand">
-      <a href="/">{site.name}</a>
+      <a href="/" aria-label={`${site.name} home`}>
+        <span class="site-footer__logo" aria-hidden="true"></span>
+      </a>
     </div>
     <nav class="site-footer__nav" aria-label="Footer navigation">
       <a href="/services/">Work</a>
@@ -48,15 +50,19 @@ const isDark = variant === 'dark';
   }
 
   .site-footer__brand a {
-    color: var(--color-heading);
-    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
-    font-size: var(--text-sm);
-    transition: opacity 0.2s ease;
   }
 
-  .site-footer__brand a:hover {
-    opacity: 0.65;
+  .site-footer__logo {
+    display: block;
+    width: 7.25rem;
+    height: calc(7.25rem * 490 / 1215);
+    aspect-ratio: 1215 / 490;
+    background: var(--brand-primary);
+    mask: url('/timberon-cabinets/uploads/brand/tc-logo.png') center / contain no-repeat;
+    -webkit-mask: url('/timberon-cabinets/uploads/brand/tc-logo.png') center / contain no-repeat;
   }
 
   .site-footer__nav {
@@ -66,15 +72,17 @@ const isDark = variant === 'dark';
   }
 
   .site-footer__nav a {
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    font-weight: 500;
+    color: var(--color-text);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
   .site-footer__nav a:hover {
-    color: var(--color-heading);
+    color: var(--brand-primary);
   }
 
   .site-footer__copy {
@@ -98,16 +106,20 @@ const isDark = variant === 'dark';
     color: #ffffff;
   }
 
+  .site-footer--dark .site-footer__logo {
+    background: #ffffff;
+  }
+
   .site-footer--dark .site-footer__brand a:hover {
     opacity: 0.65;
   }
 
   .site-footer--dark .site-footer__nav a {
-    color: rgba(255, 255, 255, 0.65);
+    color: #ffffff;
   }
 
   .site-footer--dark .site-footer__nav a:hover {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .site-footer--dark .site-footer__copy span {
@@ -123,6 +135,10 @@ const isDark = variant === 'dark';
 
     .site-footer__nav {
       flex-wrap: wrap;
+    }
+
+    .site-footer__logo {
+      margin-inline: auto;
     }
 
     .site-footer__copy {
