@@ -40,7 +40,6 @@ const {
               <strong class="selected-work__title">{project.title}</strong>
               <span class="selected-work__description">{project.description ?? ''}</span>
             </div>
-            <span class="selected-work__location">Thomastown, VIC</span>
           </div>
         </article>
       ))}
@@ -136,14 +135,7 @@ const {
     text-align: right;
   }
 
-  .selected-work__location {
-    display: block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-  }
+
 
   @media (max-width: 860px) {
     .selected-work__header .section-heading {

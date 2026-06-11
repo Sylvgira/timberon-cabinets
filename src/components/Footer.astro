@@ -44,7 +44,7 @@ const navLinks = [
 
     <!-- Column 2: navigation -->
     <div class="site-footer__column">
-      <h4 class="site-footer__label">Navigate</h4>
+      <h4 class="site-footer__label">Pages</h4>
       <nav class="site-footer__nav" aria-label="Footer navigation">
         {navLinks.map((link) => (
           <a href={link.href}>{link.label}</a>
@@ -127,7 +127,7 @@ const navLinks = [
   <div class="site-footer__bottom">
     <div class="site-footer__bottom-inner container">
       <p class="site-footer__copy">&copy; {year} {site.name}. All rights reserved.</p>
-      <p class="site-footer__credit">Built in Melbourne &mdash; where good things are made.</p>
+      <p class="site-footer__credit">Built in Melbourne, where good things are made.</p>
     </div>
   </div>
 </footer>
@@ -179,7 +179,7 @@ const navLinks = [
 
   .site-footer__tagline {
     margin: 0;
-    max-width: 22ch;
+    max-width: 30ch;
     font-size: var(--text-sm);
     line-height: var(--line-body);
     color: var(--color-text-muted);
